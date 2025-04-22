@@ -8,6 +8,8 @@ When a StatefulSet pod terminates for any reason (deletion, crash, node failure)
 - Ordered Deployment: Pods are recreated in sequential order
 - State Preservation: Persistent volumes remain attached to the same pod identities
 
+Example: Demonstrating StatefulSet Recovery
+Let's demonstrate the rolling recovery (auto-healing) effect by deliberately deleting pods and observing how StatefulSets maintain state:
 ```
 ➜  mysql git:(main) kubectl delete pod mysql-statefulset-0 -n mysql-ns
 pod "mysql-statefulset-0" deleted
