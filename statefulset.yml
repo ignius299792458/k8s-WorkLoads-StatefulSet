@@ -3,7 +3,6 @@ apiVersion: apps/v1
 metadata:
   name: mysql-statefulset
   namespace: mysql-ns
-  
 
 spec:
   serviceName: mysql-service
@@ -11,33 +10,33 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  
-  templates:
-    meatadata:
+
+  template:
+    metadata:
       labels:
         app: mysql
-      
-      spec:
-        containers:
-        - name: mysql-container
-          image: mysql:latest
-          ports:
-          - containerPorts: 3306
-          env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: root
-          - name: MYSQL_DATABASE
-            value: devops
-          
-          volumeMounts:
-          - name: mysql-data
-            mountPath: /var/lib/mysql
-            
-      volumeClaimTemplates:
-      - metadata:
-          name: mysql-data
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 0.5Gi 
+    
+    spec:
+      containers:
+      - name: mysql-container
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        - name: MYSQL_DATABASE
+          value: devops
+
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 0.5Gi
