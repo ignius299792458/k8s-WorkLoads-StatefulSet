@@ -6,7 +6,8 @@ Maintains state and unique identity for pods
 
 `Example`:
 You're building a distributed database system for a financial application that requires data persistence and ordered operations.
-You deploy MongoDB as a StatefulSet with 3 replicas. Each pod gets a predictable name (mongodb-0, mongodb-1, mongodb-2) and stable hostname that doesn't change even after pod restarts. The primary database runs on mongodb-0, with secondaries on the others. Each pod has its own persistent volume that stays associated with it. When a pod restarts, it reconnects to the same storage volume, maintaining data consistency. During scaling operations, pods are created and terminated in order, avoiding data corruption. Client applications connect to specific instances when they need to write to the primary.
+You deploy MongoDB as a StatefulSet with 3 replicas. Each pod gets a predictable name (mongodb-0, mongodb-1, mongodb-2) and stable hostname that doesn't change even after pod restarts. 
+The primary database runs on mongodb-0, with secondaries on the others. Each pod has its own persistent volume that stays associated with it. When a pod restarts, it reconnects to the same storage volume, maintaining data consistency. During scaling operations, pods are created and terminated in order, avoiding data corruption. Client applications connect to specific instances when they need to write to the primary.
 
 ## Kubernetes Workload Resources
 
